@@ -19,7 +19,7 @@ export default function Home() {
               <span className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
                 M
               </span>
-              <span className="font-bold text-xl">MediLayer</span>
+              <span className="font-extralight text-xl">MediLayer</span>
             </Link>
           </div>
           <nav className="hidden md:flex gap-6">
@@ -61,7 +61,7 @@ export default function Home() {
             <span className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
               M
             </span>
-            <span className="font-bold text-xl">MediLayer</span>
+            <span className="font-bold  text-xl">MediLayer</span>
           </div>
           <p className="text-sm text-muted-foreground">© 2024 MediLayer. All rights reserved.</p>
           <div className="flex gap-4">

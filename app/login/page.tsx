@@ -7,12 +7,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [walletAddress, setWalletAddress] = useState<string | null>(null)
-  
-  const connectWallet = async () => {
+  const [selectedWallet, setSelectedWallet] = useState<string>("")
+
+  const connectWallet = async (walletType: string) => {
     if (!window.ethereum) {
       alert("Please install MetaMask or another Web3 wallet!")
       return
@@ -25,6 +27,7 @@ export default function LoginPage() {
       
       if (accounts.length > 0) {
         setWalletAddress(accounts[0])
+        setSelectedWallet(walletType)
       }
     } catch (error) {
       console.error("Error connecting wallet:", error)
@@ -34,10 +37,11 @@ export default function LoginPage() {
 
   const disconnectWallet = () => {
     setWalletAddress(null)
+    setSelectedWallet("")
   }
 
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
+    <div className="container flex min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6 md:p-8">
       <Link
         href="/"
         className="absolute left-4 top-4 md:left-8 md:top-8 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -46,13 +50,17 @@ export default function LoginPage() {
         Back to home
       </Link>
       
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+      <div className="mx-auto flex w-full max-w-[600px] flex-col justify-center space-y-6 sm:space-y-8">
         <div className="flex flex-col space-y-2 text-center">
           <div className="mx-auto h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl">
             M
           </div>
-          <h1 className="text-2xl font-semibold tracking-tight">Welcome back</h1>
-          <p className="text-sm text-muted-foreground">Enter your credentials to access your account</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
+            Create an account
+          </h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
+            Join our blockchain healthcare platform
+          </p>
           
           {/* Wallet Connection Status */}
           {walletAddress ? (
@@ -62,8 +70,11 @@ export default function LoginPage() {
                   <div>
                     <p className="font-medium">Connected Wallet:</p>
                     <p className="truncate text-sm">{walletAddress}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Provider: {selectedWallet}
+                    </p>
                   </div>
-                  <Button 
+                  <Button
                     variant="destructive"
                     size="sm"
                     onClick={disconnectWallet}
@@ -74,42 +85,64 @@ export default function LoginPage() {
               </CardContent>
             </Card>
           ) : (
-            <Button 
-              onClick={connectWallet}
-              className="mt-4 w-full gap-2"
-              variant="outline"
-            >
-              <Wallet className="h-4 w-4" />
-              Connect Web3 Wallet
-            </Button>
+            <div className="space-y-2">
+              <Button
+                onClick={() => connectWallet("metamask")}
+                className="w-full gap-2"
+                variant="outline"
+              >
+                <Wallet className="h-4 w-4" />
+                Connect MetaMask
+              </Button>
+              
+            </div>
           )}
         </div>
 
-        {/* Rest of your existing login tabs */}
         <Tabs defaultValue="patient" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="patient">Patient</TabsTrigger>
             <TabsTrigger value="doctor">Doctor</TabsTrigger>
           </TabsList>
-          
-          {/* Patient Tab Content */}
+
           <TabsContent value="patient">
-            <Card>
+            <Card className="overflow-hidden">
               <CardHeader>
-                <CardTitle>Patient Login</CardTitle>
-                <CardDescription>Access your medical records and health quests</CardDescription>
+                <CardTitle className="text-xl sm:text-2xl md:text-3xl">
+                  Patient Registration
+                </CardTitle>
+                <CardDescription className="text-sm sm:text-base">
+                  Create your patient account to manage your health records
+                </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                {/* Your existing patient form fields */}
-                <div className="space-y-2">
-                  <Label htmlFor="patient-email">Email</Label>
-                  <Input id="patient-email" type="email" placeholder="name@example.com" />
+              <CardContent className="space-y-6 sm:space-y-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="first-name" className="text-sm sm:text-base">
+                      First name
+                    </Label>
+                    <Input id="first-name" placeholder="John" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="last-name" className="text-sm sm:text-base">
+                      Last name
+                    </Label>
+                    <Input id="last-name" placeholder="Doe" />
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="patient-password">Password</Label>
+                  <Label htmlFor="email" className="text-sm sm:text-base">
+                    Email
+                  </Label>
+                  <Input id="email" type="email" placeholder="name@example.com" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-sm sm:text-base">
+                    Password
+                  </Label>
                   <div className="relative">
                     <Input 
-                      id="patient-password" 
+                      id="password" 
                       type={showPassword ? "text" : "password"} 
                       placeholder="••••••••" 
                     />
@@ -129,34 +162,78 @@ export default function LoginPage() {
                     </Button>
                   </div>
                 </div>
+                <div className="space-y-2">
+                  <Label htmlFor="dob" className="text-sm sm:text-base">
+                    Date of Birth
+                  </Label>
+                  <Input id="dob" type="date" />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="terms" />
+                  <label
+                    htmlFor="terms"
+                    className="text-sm sm:text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    I agree to the{" "}
+                    <Link href="#" className="text-emerald-500 hover:text-emerald-600 underline">
+                      terms of service
+                    </Link>{" "}
+                    and{" "}
+                    <Link href="#" className="text-emerald-500 hover:text-emerald-600 underline">
+                      privacy policy
+                    </Link>
+                  </label>
+                </div>
               </CardContent>
-              <CardFooter className="flex flex-col space-y-4">
-                <Button className="w-full bg-blue-500 hover:bg-blue-600">Sign In</Button>
-                <div className="text-center text-sm">
-                  Don&apos;t have an account?{" "}
-                  <Link href="/register" className="underline text-blue-500 hover:text-blue-600">
-                    Sign up
+              <CardFooter className="flex flex-col space-y-6">
+                <Button className="w-full bg-emerald-500 hover:bg-emerald-600">
+                  Create Account
+                </Button>
+                <div className="text-center text-sm sm:text-base">
+                  Already have an account?{" "}
+                  <Link href="/login" className="underline text-emerald-500 hover:text-emerald-600">
+                    Sign in
                   </Link>
                 </div>
               </CardFooter>
             </Card>
           </TabsContent>
 
-          {/* Doctor Tab Content */}
           <TabsContent value="doctor">
-            <Card>
+            <Card className="overflow-hidden">
               <CardHeader>
-                <CardTitle>Doctor Login</CardTitle>
-                <CardDescription>Access patient records and manage your practice</CardDescription>
+                <CardTitle className="text-xl sm:text-2xl md:text-3xl">
+                  Doctor Registration
+                </CardTitle>
+                <CardDescription className="text-sm sm:text-base">
+                  Create your doctor account to access patient records
+                </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                {/* Your existing doctor form fields */}
+              <CardContent className="space-y-6 sm:space-y-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="doctor-first-name" className="text-sm sm:text-base">
+                      First name
+                    </Label>
+                    <Input id="doctor-first-name" placeholder="John" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="doctor-last-name" className="text-sm sm:text-base">
+                      Last name
+                    </Label>
+                    <Input id="doctor-last-name" placeholder="Doe" />
+                  </div>
+                </div>
                 <div className="space-y-2">
-                  <Label htmlFor="doctor-email">Email</Label>
+                  <Label htmlFor="doctor-email" className="text-sm sm:text-base">
+                    Email
+                  </Label>
                   <Input id="doctor-email" type="email" placeholder="name@example.com" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="doctor-password">Password</Label>
+                  <Label htmlFor="doctor-password" className="text-sm sm:text-base">
+                    Password
+                  </Label>
                   <div className="relative">
                     <Input 
                       id="doctor-password" 
@@ -180,16 +257,42 @@ export default function LoginPage() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="doctor-id">Medical License ID</Label>
-                  <Input id="doctor-id" placeholder="Enter your medical license ID" />
+                  <Label htmlFor="specialty" className="text-sm sm:text-base">
+                    Specialty
+                  </Label>
+                  <Input id="specialty" placeholder="e.g., Cardiology, Family Medicine" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="license" className="text-sm sm:text-base">
+                    Medical License Number
+                  </Label>
+                  <Input id="license" placeholder="Enter your medical license ID" />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="doctor-terms" />
+                  <label
+                    htmlFor="doctor-terms"
+                    className="text-sm sm:text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    I agree to the{" "}
+                    <Link href="#" className="text-emerald-500 hover:text-emerald-600 underline">
+                      terms of service
+                    </Link>{" "}
+                    and{" "}
+                    <Link href="#" className="text-emerald-500 hover:text-emerald-600 underline">
+                      privacy policy
+                    </Link>
+                  </label>
                 </div>
               </CardContent>
-              <CardFooter className="flex flex-col space-y-4">
-                <Button className="w-full bg-blue-500 hover:bg-blue-600">Sign In</Button>
-                <div className="text-center text-sm">
-                  Don&apos;t have an account?{" "}
-                  <Link href="/register" className="underline text-blue-500 hover:text-blue-600">
-                    Sign up
+              <CardFooter className="flex flex-col space-y-6">
+                <Button className="w-full bg-blue-500 hover:bg-blue-600">
+                  Create Account
+                </Button>
+                <div className="text-center text-sm sm:text-base">
+                  Already have an account?{" "}
+                  <Link href="/login" className="underline text-blue-500 hover:text-blue-600">
+                    Sign in
                   </Link>
                 </div>
               </CardFooter>
