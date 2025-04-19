@@ -23,7 +23,7 @@ export default function QRCodePage() {
     <div className="container mx-auto py-6 px-4 md:px-6">
       <div className="flex items-center gap-4 mb-6">
         <Link
-          href="/dashboard"
+          href="#"
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -62,7 +62,7 @@ export default function QRCodePage() {
                   <Switch id="all-records" checked={includeAllRecords} onCheckedChange={setIncludeAllRecords} />
                 </div>
 
-                {!includeAllRecords && (
+                {/* {!includeAllRecords && (
                   <>
                     <div className="flex items-center justify-between">
                       <Label htmlFor="vital-signs" className="flex flex-col gap-1">
@@ -104,7 +104,7 @@ export default function QRCodePage() {
                       />
                     </div>
                   </>
-                )}
+                )} */}
               </div>
             </CardContent>
             <CardFooter>
