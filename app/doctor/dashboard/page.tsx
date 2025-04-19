@@ -41,10 +41,10 @@ export default function DoctorDashboardPage() {
       >
         <div className="flex h-16 items-center justify-between px-4 border-b">
           <Link href="/doctor/dashboard" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold">
-              H
+            <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
+              M
             </div>
-            <span className="font-bold">HealthChain</span>
+            <span className="font-bold">MediLayer</span>
           </Link>
           <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(false)} className="md:hidden">
             <X className="h-5 w-5" />
@@ -81,13 +81,13 @@ export default function DoctorDashboardPage() {
               <Calendar className="h-5 w-5" />
               <span>Appointments</span>
             </Link>
-            <Link
+            {/* <Link
               href="/doctor/messages"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
             >
               <MessageSquare className="h-5 w-5" />
               <span>Messages</span>
-            </Link>
+            </Link> */}
             <Link
               href="/doctor/quests"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
