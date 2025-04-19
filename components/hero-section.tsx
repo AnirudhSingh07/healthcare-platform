@@ -4,10 +4,13 @@ import { ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
+import { WavyBackground } from "@/components/ui/wavy-background";
+
 export function HeroSection() {
   return (
     <section className="w-full py-8 md:py-24 lg:py-32 xl:py-48">
       
+      <WavyBackground className="h-full w-full opacity-60" />
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 ">
           <div className="flex flex-col justify-center space-y-4">
@@ -15,7 +18,7 @@ export function HeroSection() {
             <h2 className="text-4xl md:text-5xl font-light">
                     Revolutionizing Healthcare with{" "}
                     <span className="bg-gradient-to-r from-red-400 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                      Blockchain
+                      MediLayer
                     </span>
                   </h2>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">

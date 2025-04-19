@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 
+
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [walletAddress, setWalletAddress] = useState<string | null>(null)
@@ -41,7 +42,8 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="container flex h-full mt-10 mb-5 w-screen flex-col items-center justify-center">
+    <div className="container flex h-full mt-10 mb-5 w-full flex-col items-center justify-center ">
+
       <Link
         href="/"
         className="absolute left-4 top-4 md:left-8 md:top-8 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -62,7 +64,7 @@ export default function RegisterPage() {
           
         </div>
 
-        <Tabs defaultValue="patient" className="w-full">
+        <Tabs defaultValue="patient" className="w-full ">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="patient">Patient</TabsTrigger>
             <TabsTrigger value="doctor">Doctor</TabsTrigger>

@@ -6,7 +6,7 @@ import { FeatureSection } from "@/components/feature-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { CTASection } from "@/components/cta-section"
-import { WavyBackground } from "@/components/ui/wavy"
+import { WavyBackground } from "@/components/ui/wavy-background";
 
 export default function Home() {
   return (

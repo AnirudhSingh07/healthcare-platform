@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
+import { WavyBackground } from "@/components/ui/wavy-background";
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -42,6 +43,8 @@ export default function RegisterPage() {
 
   return (
     <div className="container flex min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+      
+      <WavyBackground className="h-full w-full opacity-60 " />
       <Link
         href="/"
         className="absolute left-4 top-4 md:left-8 md:top-8 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -49,54 +52,13 @@ export default function RegisterPage() {
         <ArrowLeft className="h-4 w-4" />
         Back to home
       </Link>
-      
-      <div className="mx-auto flex w-full max-w-[600px] flex-col justify-center space-y-6 sm:space-y-8">
-        <div className="flex flex-col space-y-2 text-center">
-          <div className="mx-auto h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl">
-            M
-          </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
-            Create an account
-          </h1>
-          <p className="text-sm sm:text-base text-muted-foreground">
-            Join our blockchain healthcare platform
-          </p>
+       
+      <div className="mx-auto flex w-full  max-w-[600px] flex-col  justify-center space-y-6 sm:space-y-8">
+        <div className="flex flex-col space-y-2 text-center ">
+         
           
           {/* Wallet Connection Status */}
-          {walletAddress ? (
-            <Card className="mt-4 bg-green-50 border-green-200">
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium">Connected Wallet:</p>
-                    <p className="truncate text-sm">{walletAddress}</p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Provider: {selectedWallet}
-                    </p>
-                  </div>
-                  <Button
-                    variant="destructive"
-                    size="sm"
-                    onClick={disconnectWallet}
-                  >
-                    Disconnect
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ) : (
-            <div className="space-y-2">
-              <Button
-                onClick={() => connectWallet("metamask")}
-                className="w-full gap-2"
-                variant="outline"
-              >
-                <Wallet className="h-4 w-4" />
-                Connect MetaMask
-              </Button>
-              
-            </div>
-          )}
+         
         </div>
 
         <Tabs defaultValue="patient" className="w-full">
@@ -106,7 +68,7 @@ export default function RegisterPage() {
           </TabsList>
 
           <TabsContent value="patient">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden bg-blue-200">
               <CardHeader>
                 <CardTitle className="text-xl sm:text-2xl md:text-3xl">
                   Patient Registration
@@ -168,6 +130,40 @@ export default function RegisterPage() {
                   </Label>
                   <Input id="dob" type="date" />
                 </div>
+                {walletAddress ? (
+            <Card className="mt-4 bg-blue-300 border-green-200">
+              <CardContent className="pt-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-medium">Connected Wallet:</p>
+                    <p className="truncate text-sm">{walletAddress}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Provider: {selectedWallet}
+                    </p>
+                  </div>
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={disconnectWallet}
+                  >
+                    Disconnect
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="space-y-2">
+              <Button
+                onClick={() => connectWallet("metamask")}
+                className="w-full gap-2"
+                variant="outline"
+              >
+                <Wallet className="h-4 w-4" />
+                Connect MetaMask
+              </Button>
+              
+            </div>
+          )}
                 <div className="flex items-center space-x-2">
                   <Checkbox id="terms" />
                   <label
@@ -175,23 +171,23 @@ export default function RegisterPage() {
                     className="text-sm sm:text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
                     I agree to the{" "}
-                    <Link href="#" className="text-emerald-500 hover:text-emerald-600 underline">
+                    <Link href="#" className="text-blue-500 hover:text-blue-600 underline">
                       terms of service
                     </Link>{" "}
                     and{" "}
-                    <Link href="#" className="text-emerald-500 hover:text-emerald-600 underline">
+                    <Link href="#" className="text-blue-500 hover:text-blue-600 underline">
                       privacy policy
                     </Link>
                   </label>
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col space-y-6">
-                <Button className="w-full bg-emerald-500 hover:bg-emerald-600">
+                <Button className="w-full bg-blue-500 hover:bg-blue-600">
                   Create Account
                 </Button>
                 <div className="text-center text-sm sm:text-base">
                   Already have an account?{" "}
-                  <Link href="/login" className="underline text-emerald-500 hover:text-emerald-600">
+                  <Link href="/login" className="underline text-blue-500 hover:text-blue-600">
                     Sign in
                   </Link>
                 </div>
@@ -200,7 +196,7 @@ export default function RegisterPage() {
           </TabsContent>
 
           <TabsContent value="doctor">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden bg-blue-200">
               <CardHeader>
                 <CardTitle className="text-xl sm:text-2xl md:text-3xl">
                   Doctor Registration
@@ -268,7 +264,42 @@ export default function RegisterPage() {
                   </Label>
                   <Input id="license" placeholder="Enter your medical license ID" />
                 </div>
+                {walletAddress ? (
+            <Card className="mt-4 bg-blue-300 border-green-200">
+              <CardContent className="pt-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-medium">Connected Wallet:</p>
+                    <p className="truncate text-sm">{walletAddress}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Provider: {selectedWallet}
+                    </p>
+                  </div>
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={disconnectWallet}
+                  >
+                    Disconnect
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="space-y-2">
+              <Button
+                onClick={() => connectWallet("metamask")}
+                className="w-full gap-2"
+                variant="outline"
+              >
+                <Wallet className="h-4 w-4" />
+                Connect MetaMask
+              </Button>
+              
+            </div>
+          )}
                 <div className="flex items-center space-x-2">
+                  
                   <Checkbox id="doctor-terms" />
                   <label
                     htmlFor="doctor-terms"
