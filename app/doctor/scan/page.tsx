@@ -58,7 +58,7 @@ export default function ScanQRCodePage() {
                   <Alert className="mb-4 bg-emerald-50 text-emerald-700 border-emerald-200">
                     <Check className="h-4 w-4" />
                     <AlertTitle>QR Code Scanned Successfully</AlertTitle>
-                    <AlertDescription>You now have access to John Doe's medical records</AlertDescription>
+                    <AlertDescription>You now have access to  medical records</AlertDescription>
                   </Alert>
 
                   <div className="flex items-center gap-4 mb-4">
@@ -70,7 +70,7 @@ export default function ScanQRCodePage() {
                       alt="Patient avatar"
                     />
                     <div>
-                      <h3 className="font-bold text-lg">John Doe</h3>
+                      <h3 className="font-bold text-lg">Vaibhav Sharma</h3>
                       <p className="text-sm text-muted-foreground">42 years old • Male</p>
                       <p className="text-sm text-muted-foreground">Patient ID: #12345</p>
                     </div>
@@ -136,7 +136,7 @@ export default function ScanQRCodePage() {
                 <Alert className="bg-emerald-50 text-emerald-700 border-emerald-200">
                   <Check className="h-4 w-4" />
                   <AlertTitle>Tokens Earned</AlertTitle>
-                  <AlertDescription>You've earned 75 tokens for updating this medical record</AlertDescription>
+                  <AlertDescription>You've earned 1 Token for updating this medical record</AlertDescription>
                 </Alert>
                 <div className="mt-4 text-center">
                   <p className="text-sm text-muted-foreground">
@@ -156,9 +156,9 @@ export default function ScanQRCodePage() {
         {scanComplete && (
           <div>
             <Tabs defaultValue="records">
-              <TabsList className="grid w-full grid-cols-3">
+              <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="records">Medical Records</TabsTrigger>
-                <TabsTrigger value="vitals">Vital Signs</TabsTrigger>
+                {/* <TabsTrigger value="vitals">Vital Signs</TabsTrigger> */}
                 <TabsTrigger value="medications">Medications</TabsTrigger>
               </TabsList>
               <TabsContent value="records">
@@ -185,8 +185,8 @@ export default function ScanQRCodePage() {
                               <span>Annual Physical</span>
                             </div>
                           </TableCell>
-                          <TableCell>April 12, 2024</TableCell>
-                          <TableCell>Dr. Michael Chen</TableCell>
+                          <TableCell>-</TableCell>
+                          <TableCell>-</TableCell>
                           <TableCell className="text-right">
                             <Button variant="ghost" size="sm">
                               View
@@ -200,15 +200,15 @@ export default function ScanQRCodePage() {
                               <span>Blood Test Results</span>
                             </div>
                           </TableCell>
-                          <TableCell>March 3, 2024</TableCell>
-                          <TableCell>LabCorp</TableCell>
+                          <TableCell>-</TableCell>
+                          <TableCell>-</TableCell>
                           <TableCell className="text-right">
                             <Button variant="ghost" size="sm">
                               View
                             </Button>
                           </TableCell>
                         </TableRow>
-                        <TableRow>
+                        {/* <TableRow>
                           <TableCell className="font-medium">
                             <div className="flex items-center gap-2">
                               <FileText className="h-4 w-4 text-emerald-500" />
@@ -222,7 +222,7 @@ export default function ScanQRCodePage() {
                               View
                             </Button>
                           </TableCell>
-                        </TableRow>
+                        </TableRow> */}
                       </TableBody>
                     </Table>
                   </CardContent>
@@ -334,8 +334,8 @@ export default function ScanQRCodePage() {
                   <AlertTitle>Allergies</AlertTitle>
                   <AlertDescription>
                     <ul className="list-disc pl-5 mt-2">
-                      <li>Penicillin - Severe reaction</li>
-                      <li>Sulfa drugs - Moderate reaction</li>
+                      {/* <li>Penicillin - Severe reaction</li>
+                      <li>Sulfa drugs - Moderate reaction</li> */}
                     </ul>
                   </AlertDescription>
                 </Alert>
@@ -344,9 +344,9 @@ export default function ScanQRCodePage() {
                   <AlertTitle>Medical Conditions</AlertTitle>
                   <AlertDescription>
                     <ul className="list-disc pl-5 mt-2">
-                      <li>Type 2 Diabetes - Diagnosed 2018</li>
+                      {/* <li>Type 2 Diabetes - Diagnosed 2018</li>
                       <li>Hypertension - Diagnosed 2019</li>
-                      <li>Hyperlipidemia - Diagnosed 2019</li>
+                      <li>Hyperlipidemia - Diagnosed 2019</li> */}
                     </ul>
                   </AlertDescription>
                 </Alert>

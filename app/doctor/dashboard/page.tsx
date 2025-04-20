@@ -158,7 +158,7 @@ export default function DoctorDashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">8</div>
-                <p className="text-xs text-muted-foreground">2 remaining for today</p>
+                <p className="text-xs text-muted-foreground">3 remaining for today</p>
               </CardContent>
             </Card>
             <Card>
@@ -166,8 +166,8 @@ export default function DoctorDashboardPage() {
                 <CardTitle className="text-sm font-medium">Token Balance</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">2,450</div>
-                <p className="text-xs text-muted-foreground">+320 earned this week</p>
+                <div className="text-2xl font-bold">5</div>
+                {/* <p className="text-xs text-muted-foreground">+320 earned this week</p> */}
               </CardContent>
             </Card>
             <Card>
@@ -175,8 +175,8 @@ export default function DoctorDashboardPage() {
                 <CardTitle className="text-sm font-medium">Patients Seen</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">156</div>
-                <p className="text-xs text-muted-foreground">+12 from last month</p>
+                <div className="text-2xl font-bold">4</div>
+                {/* <p className="text-xs text-muted-foreground">+12 from last month</p> */}
               </CardContent>
             </Card>
             <Card>
@@ -192,7 +192,7 @@ export default function DoctorDashboardPage() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="lg:col-span-4">
+            {/* <Card className="lg:col-span-4">
               <CardHeader>
                 <CardTitle>Upcoming Appointments</CardTitle>
                 <CardDescription>Your schedule for today</CardDescription>
@@ -210,10 +210,10 @@ export default function DoctorDashboardPage() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <p className="font-medium">Sarah Johnson</p>
-                        <p className="text-sm text-muted-foreground">10:30 AM</p>
+                        <p className="font-medium">-</p>
+                        <p className="text-sm text-muted-foreground">-</p>
                       </div>
-                      <p className="text-sm text-muted-foreground">Annual checkup</p>
+                      <p className="text-sm text-muted-foreground">-</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -222,23 +222,23 @@ export default function DoctorDashboardPage() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <p className="font-medium">Robert Williams</p>
-                        <p className="text-sm text-muted-foreground">11:45 AM</p>
+                        <p className="font-medium">-</p>
+                        <p className="text-sm text-muted-foreground">-</p>
                       </div>
-                      <p className="text-sm text-muted-foreground">Follow-up consultation</p>
+                      <p className="text-sm text-muted-foreground">-</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="rounded-full bg-emerald-100 p-2">
                       <Calendar className="h-5 w-5 text-emerald-500" />
                     </div>
-                    <div className="flex-1">
+                    {/* <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <p className="font-medium">Emily Rodriguez</p>
                         <p className="text-sm text-muted-foreground">2:15 PM</p>
                       </div>
                       <p className="text-sm text-muted-foreground">Cardiology consultation</p>
-                    </div>
+                    </div> 
                   </div>
                 </div>
               </CardContent>
@@ -247,7 +247,7 @@ export default function DoctorDashboardPage() {
                   View All Appointments
                 </Button>
               </CardFooter>
-            </Card>
+            </Card> */}
 
             <Card className="lg:col-span-3">
               <CardHeader>
