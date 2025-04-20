@@ -120,13 +120,13 @@ export default function ScanQRCodePage() {
           <CardContent className="flex flex-col items-center justify-center p-6 min-h-[300px]">
             {!scanComplete ? (
               <>
-                {error && (
+                {/* {error && (
                   <Alert variant="destructive" className="mb-4">
                     <X className="h-4 w-4" />
                     <AlertTitle>Error</AlertTitle>
                     <AlertDescription>{error}</AlertDescription>
                   </Alert>
-                )}
+                )} */}
                 <div className="relative w-full max-w-md mx-auto">
                   <Webcam
                     ref={webcamRef}
@@ -139,13 +139,13 @@ export default function ScanQRCodePage() {
                       height: { ideal: 480 }
                     }}
                   />
-                  <Button
+                  {/* <Button
                     onClick={handleScan}
                     disabled={isProcessing}
                     className="absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-emerald-500 hover:bg-emerald-600"
                   >
                     {isProcessing ? 'Scanning...' : 'Scan QR Code'}
-                  </Button>
+                  </Button> */}
                 </div>
               </>
             ) : (
@@ -179,7 +179,7 @@ export default function ScanQRCodePage() {
                 onClick={handleScan}
                 disabled={isProcessing}
               >
-                {isProcessing ? 'Scanning...' : 'Start Scanning'}
+                {isProcessing ? 'Scanning...' : 'Scan QR Code'}
               </Button>
             ) : (
               <div className="w-full grid grid-cols-2 gap-2">

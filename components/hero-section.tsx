@@ -8,13 +8,13 @@ import { WavyBackground } from "@/components/ui/wavy-background";
 
 export function HeroSection() {
   return (
-    <section className="w-full py-8 md:py-24 lg:py-32 xl:py-48">
+    <section className="w-full h-[100vh] py-8 md:py-24 lg:py-32 xl:py-48">
       
       <WavyBackground className="h-full w-full opacity-60" />
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 ">
           <div className="flex flex-col justify-center space-y-4">
-            <div className="space-y-2">
+            <div className="space-y-2 mt-9">
             <h2 className="text-4xl md:text-5xl font-light">
                     Revolutionizing Healthcare with{" "}
                     <span className="bg-gradient-to-r from-red-400 via-purple-500 to-blue-500 bg-clip-text text-transparent">
@@ -26,7 +26,7 @@ export function HeroSection() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Link href="/register">
+              <Link href="/login">
                 <Button size="lg" className="bg-blue-500 hover:bg-blue-600">
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />

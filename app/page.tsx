@@ -39,7 +39,7 @@ export default function Home() {
                 Log In
               </Button>
             </Link>
-            <Link href="/register">
+            <Link href="/login">
               <Button size="sm" className="bg-blue-500 hover:bg-blue-600">
                 Register
               </Button>

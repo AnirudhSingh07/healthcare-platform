@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import {
   Activity,
   Bell,
@@ -28,6 +29,7 @@ import { Badge } from "@/components/ui/badge"
 import { useMobile } from "@/hooks/use-mobile"
 
 export default function DoctorDashboardPage() {
+  const router = useRouter()
   const isMobile = useMobile()
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile)
 
@@ -262,7 +264,9 @@ export default function DoctorDashboardPage() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button className="w-full bg-emerald-500 hover:bg-emerald-600">Open Scanner</Button>
+                <Button onClick={() => {
+                  router.push("/doctor/scan")
+                }} className="w-full bg-emerald-500 hover:bg-emerald-600">Open Scanner</Button>
               </CardFooter>
             </Card>
           </div>

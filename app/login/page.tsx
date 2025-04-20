@@ -1,4 +1,5 @@
 "use client"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import Link from "next/link"
 import { ArrowLeft, Eye, EyeOff, Wallet } from "lucide-react"
@@ -11,6 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { WavyBackground } from "@/components/ui/wavy-background";
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false)
   const [walletAddress, setWalletAddress] = useState<string | null>(null)
   const [selectedWallet, setSelectedWallet] = useState<string>("")
@@ -182,7 +184,9 @@ export default function RegisterPage() {
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col space-y-6">
-                <Button className="w-full bg-blue-500 hover:bg-blue-600">
+                <Button onClick={() => {
+                    router.push("/patient")
+                }} className="w-full bg-blue-500 hover:bg-blue-600">
                   Create Account
                 </Button>
                 <div className="text-center text-sm sm:text-base">
@@ -317,7 +321,9 @@ export default function RegisterPage() {
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col space-y-6">
-                <Button className="w-full bg-blue-500 hover:bg-blue-600">
+                <Button onClick={() => {
+                  router.push("/doctor/dashboard");
+                }} className="w-full bg-blue-500 hover:bg-blue-600">
                   Create Account
                 </Button>
                 <div className="text-center text-sm sm:text-base">
